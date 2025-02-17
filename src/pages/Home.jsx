@@ -1,4 +1,4 @@
-import { Photo, Search } from '@mui/icons-material';
+import { Search } from '@mui/icons-material';
 import styled from 'styled-components';
 import { SearchBar } from '../components/SearchBar';
 import { Card } from '@mui/material';
@@ -38,7 +38,7 @@ const Span = styled.div `
   const CardWrapper = styled.div`
     display: grid;
     gap: 20px;
-    @media (min-width: 1200px) {
+    @media (max-width: 1200px) {
     grid-template-columns: repeat(4, 1fr);
     }
      @media (min-width: 640px) and (max-width: 1199px) {
@@ -62,11 +62,6 @@ const Span = styled.div `
   `;
 
 export const Home = () => {
-  const item = {
-    photo: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-    author: "",
-    prompt: "",
-  };
   return (
     <Container>
        <Headline>
@@ -76,8 +71,11 @@ export const Home = () => {
        <SearchBar />
        <Wrapper>
         <CardWrapper>
-          <ImageCard item={item}/>
-          
+          <ImageCard/>
+          <ImageCard/>
+          <ImageCard/>
+          <ImageCard/>
+          <ImageCard/>
         </CardWrapper>
        </Wrapper>
 
