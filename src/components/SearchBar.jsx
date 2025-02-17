@@ -14,7 +14,7 @@ padding: 12px 16px;
 cursor: pointer;
 gap: 6px;
 align-items: center;
-width: 100%; /* Added width property */
+width: 100%; 
 
 `;
 

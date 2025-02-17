@@ -1,6 +1,8 @@
-import { Search } from '@mui/icons-material';
+import { Photo, Search } from '@mui/icons-material';
 import styled from 'styled-components';
 import { SearchBar } from '../components/SearchBar';
+import { Card } from '@mui/material';
+import { ImageCard } from '../components/ImageCard';
 
 const Container = styled.div`
   height: 100%;
@@ -30,10 +32,41 @@ const Span = styled.div `
  font-size: 30px;
   font-weight: 800;
   color: ${({ theme }) => theme.secondary};
+  @media (max-width: 600) {
+  fontsize: 20px;
+  `;
+  const CardWrapper = styled.div`
+    display: grid;
+    gap: 20px;
+    @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    }
+     @media (min-width: 640px) and (max-width: 1199px) {
+    grid-template-columns: repeat(3, 1fr);
+    }
+     @media (max-width: 639px) {
+    grid-template-columns: repeat(2, 1fr);
+    }
+  `;
+  
+  const Wrapper = styled.div `
+  width: 100%;
+ 
+  display: flex;
+  justify-content: center;
+  padding: 32px 0px;
+  
+  max-width: 1400px;
+  
   
   `;
 
 export const Home = () => {
+  const item = {
+    photo: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    author: "",
+    prompt: "",
+  };
   return (
     <Container>
        <Headline>
@@ -41,6 +74,12 @@ export const Home = () => {
         <Span>Generated with AI 🚀</Span>
        </Headline>
        <SearchBar />
+       <Wrapper>
+        <CardWrapper>
+          <ImageCard item={item}/>
+          
+        </CardWrapper>
+       </Wrapper>
 
 
 
