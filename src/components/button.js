@@ -26,14 +26,14 @@ const Button = styled.div`
       : `
     background: ${theme.primary};
   `}
-  ${({ isDisabled }) =>
-    isDisabled &&
+  ${({ isdisabled }) =>
+    isdisabled &&
     `
     opacity: 0.4;
     cursor: not-allowed;
   `}
-  ${({ isLoading }) =>
-    isLoading &&
+  ${({ isloading }) =>
+    isloading &&
     `
     opacity: 0.8;
     cursor: not-allowed;
@@ -58,10 +58,10 @@ const ButtonComponent = ({
   return (
     <Button
       onClick={() => !isDisabled && !isLoading && onClick()}
-      isDisabled={isDisabled}
+      isdisabled={isDisabled ? "true" : undefined} // Change this line
       type={type}
-      isLoading={isLoading}
-      flex={flex}
+      isloading={isLoading ? "true" : undefined} // Change this line
+      flex={flex ? "true" : undefined} // Change this line
     >
       {isLoading && <CircularProgress style={{ width: "18px", height: "18px" }} />}
       {leftIcon}

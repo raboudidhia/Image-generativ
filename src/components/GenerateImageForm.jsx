@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./button";
 import TextInput from "./TextInput";
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
-
+import { useNavigate } from "react-router-dom";
+import { CreatePost, GenerateAIImage } from "../api";
 const Form = styled.div`
   flex: 1;
   padding: 16px 20px;
@@ -49,13 +50,35 @@ export const GenerateImageForm = ({
   generateImageLoading,
   setCreatePostLoading,
 }) => {
-  const generateImageFun = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const generateImageFun = async () => {
     setGenerateImageLoading(true);
+    await GenerateAIImage({ prompt: post.prompt })
+      .then((res) => {
+        setPost({
+          ...post,
+          photo: `data:image/jpge;base64,${res?.data?.photo}`,
+        });
+        setGenerateImageLoading(false);
+      })
+      .catch((error) => {
+        setError(error?.response?.data?.message);
+        setGenerateImageLoading(false);
+      });
   };
-  const createPostFun = () => {
+  const createPostFun = async () => {
     setCreatePostLoading(true);
+    await CreatePost(post)
+      .then((res) => {
+        setCreatePostLoading(false);
+        navigate("/");
+      })
+      .catch((error) => {
+        setError(error?.response?.data?.message);
+        setCreatePostLoading(false);
+      });
   };
-
   return (
     <Form>
       <Top>
@@ -79,6 +102,7 @@ export const GenerateImageForm = ({
           value={post.prompt}
           handleChange={(e) => setPost({ ...post, prompt: e.target.value })}
         />
+        {error && <div style={{ color: "red" }}>{error}</div>}
         * You can post the AI Generated Image to the community *
       </Body>
 
