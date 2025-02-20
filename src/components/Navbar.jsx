@@ -25,7 +25,7 @@ const Navbar = () => {
  const path = location.pathname.split('/');
 return (
   <>
-    <Container>Generative AI
+    <Container>PixelDreamer
         {
             path[1] === 'post' ? (
                 <Button text="Explore Posts" leftIcon={<ExploreRounded

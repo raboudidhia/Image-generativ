@@ -18,9 +18,6 @@ width: 100%;
 
 `;
 
-
-
-
 export const SearchBar = () => {
   return (
     <SearchBarContainer>

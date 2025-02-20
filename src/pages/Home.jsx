@@ -89,7 +89,6 @@ const Home = () => {
     getPosts();
   }, []);
 
-  //Search
   useEffect(() => {
     if (!search) {
       setFilteredPosts(posts);
@@ -115,7 +114,7 @@ const Home = () => {
     <Container>
       <Headline>
         Explore popular posts in the Community!
-        <Span>⦿ Generated with AI ⦿</Span>
+        <Span> Generated with AI 🚀 </Span>
       </Headline>
       <SearchBar search={search} setSearch={setSearch} />
       <Wrapper>

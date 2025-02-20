@@ -58,7 +58,7 @@ export const GenerateImageForm = ({
       .then((res) => {
         setPost({
           ...post,
-          photo: `data:image/jpge;base64,${res?.data?.photo}`,
+          photo: `data:image/png;base64,${res?.data?.photo}`,
         });
         setGenerateImageLoading(false);
       })
